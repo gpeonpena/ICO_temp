@@ -1,0 +1,28 @@
+<label class="switch">
+  <input type="checkbox" id="dark-mode-toggle">
+  <span class="slider"></span>
+</label>
+
+<!-- Logo -->
+<img src="Logotip Salut-ICO color.png" id="logo" class="logo" alt="logo">
+
+<script>
+  const checkbox = document.getElementById('dark-mode-toggle');
+  const logo = document.getElementById('logo');
+
+  function updateTheme(dark) {
+    document.documentElement.classList.toggle('dark-mode', dark);
+    logo.src = dark ? 'logotip-Salut-ICO-blanc.png' : 'Logotip Salut-ICO color.png';
+    localStorage.setItem('darkMode', dark);
+  }
+
+  // Initialize
+  const isDark = localStorage.getItem('darkMode') === 'true';
+  checkbox.checked = isDark;
+  updateTheme(isDark);
+
+  // Toggle handler
+  checkbox.addEventListener('change', () => {
+    updateTheme(checkbox.checked);
+  });
+</script>
